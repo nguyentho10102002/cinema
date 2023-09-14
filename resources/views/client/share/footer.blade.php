@@ -16,9 +16,9 @@
                                     <ul class="navigation">
                                         <li class="active menu-item-has-children"><a href="/">Trang Chủ</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Chuyến Xe Đang Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Phim Đang Chiếu</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Chuyến Xe Sắp Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Phim Sắp Chiếu</a>
                                         </li>
                                         <li class="menu-item-has-children"><a href="/bai-viet">Bài Viết</a>
                                         </li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GheBan;
-use App\Models\ChuyenXe;
+use App\Models\Phim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +35,7 @@ class GheBanController extends Controller
     public function getData($id_lich)
     {
         $data = GheBan::where('id_lich', $id_lich)->get();
+
         return response()->json([
             'data'  => $data,
         ]);
@@ -97,10 +98,10 @@ class GheBanController extends Controller
             toastr()->error('Bạn chưa có đặt chổ nên không thể thanh toán');
             return redirect('/');
         }
-        $chuyenxe = ChuyenXe::join('lich_trinhs', 'chuyen_xes.id', 'lich_trinhs.id_chuyen_xe')
-                    ->join('ghe_bans', 'lich_trinhs.id', 'ghe_bans.id_lich')
-                    ->where('lich_trinhs.id', $dsGheBan[0]->id_lich)
-                    ->select('chuyen_xes.*', 'lich_trinhs.thoi_gian_bat_dau')
+        $phim = Phim::join('lich_chieus', 'phims.id', 'lich_chieus.id_phim')
+                    ->join('ghe_bans', 'lich_chieus.id', 'ghe_bans.id_lich')
+                    ->where('lich_chieus.id', $dsGheBan[0]->id_lich)
+                    ->select('phims.*', 'lich_chieus.thoi_gian_bat_dau')
                     ->first();
         $maGiaoDich = 'HD' . (78345 + $dsGheBan[0]->id);
         $tongVe = 0;
@@ -113,6 +114,6 @@ class GheBanController extends Controller
             $tongVe = $tongVe + 1;
         }
 
-        return view('client.thanh_toan', compact('chuyenxe', 'dsGheBan', 'maGiaoDich', 'tongVe'));
+        return view('client.thanh_toan', compact('phim', 'dsGheBan', 'maGiaoDich', 'tongVe'));
     }
 }

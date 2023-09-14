@@ -2,7 +2,7 @@
 @section('noi_dung')
 <div class="card" id="app">
     <div class="card-header">
-       <h5> Danh Sách Tài Khoản Đã Đăng Ký</h5>
+       <h5> Danh Sách Khách Hàng Đã Đăng Ký</h5>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -107,7 +107,7 @@
                     </div>
                     <div class="modal-body">
                         <input type="hidden"v-model="xoa.id" >
-                        Ban chắc chắn là sẽ xoá tài khoản <b class="text-danger">@{{ xoa.ho_va_ten }}</b> này!<br>
+                        Ban chắc chắn là sẽ xoá khách hàng <b class="text-danger">@{{ xoa.ho_va_ten }}</b> này!<br>
                         <b>Lưu ý: Hành động này không thể khôi phục!</b>
 
                     </div>
@@ -122,13 +122,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Đổi Mật Khẩu</h5>
+                        <h5 class="modal-title">Đổi Mật Khẩu Khách Hàng</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="card">
                             <div class="card-header">
-                                Thay Đổi Mật Khẩu Tài Khoản
+                                Thay Đổi Mật Khẩu Khách Hàng
                             </div>
                             <div class="card-body">
                                 <div class="form-group mt-2">

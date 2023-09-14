@@ -38,8 +38,8 @@ class CustomerController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
-        $chuyenxe = Customer::where('id', $request->id)->first();
-        $chuyenxe->update($data);
+        $phim = Customer::where('id', $request->id)->first();
+        $phim->update($data);
 
         return response()->json([
             'status'    => true,

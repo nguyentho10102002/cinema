@@ -14,10 +14,10 @@ class CreateLichChieuRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_xe'                  =>  'required|exists:xes,id',
-            'id_chuyen_xe'                   =>  'required|exists:chuyen_xes,id',
-            'thoi_gian_chay_chinh'     =>  'required|numeric|min:0',
-            'thoi_gian_nghi_chan'       =>  'required|numeric|min:0',
+            'id_phong'                  =>  'required|exists:phongs,id',
+            'id_phim'                   =>  'required|exists:phims,id',
+            'thoi_gian_chieu_chinh'     =>  'required|numeric|min:0',
+            'thoi_gian_quang_cao'       =>  'required|numeric|min:0',
             'ngay_bat_dau'              =>  'required|date',
             'ngay_ket_thuc'             =>  'required|date|after_or_equal:ngay_bat_dau',
             'gio_bat_dau'               =>  'required',

@@ -22,14 +22,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(value, key) in list_xe">
+                            <tr v-for="(value, key) in list_phong">
                                 <th>@{{ key + 1 }}</th>
-                                <td>@{{ value.ten_xe }}</td>
+                                <td>@{{ value.ten_phong }}</td>
                                 <td>@{{ value.tinh_trang }}</td>
                                 <td>@{{ value.hang_ngang }}</td>
                                 <td>@{{ value.hang_doc }}</td>
                                 <td>
-                                    <button v-on:click="xe_edit = value" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Cập Nhật</button>
+                                    <button v-on:click="phong_edit = value" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Cập Nhật</button>
                                     <button class="btn btn-danger">Xóa Bỏ</button>
                                 </td>
                             </tr>
@@ -45,15 +45,15 @@
                                 </div>
                                 <div class="modal-body">
                                 <label>id</label>
-                                <input v-bind:value="xe_edit.id" type="text" class="mb-2 form-control">
+                                <input v-bind:value="phong_edit.id" type="text" class="mb-2 form-control">
                                 <label>Tên phòng</label>
-                                <input v-bind:value="xe_edit.ten_xe" type="text" class="mb-2 form-control">
+                                <input v-bind:value="phong_edit.ten_phong" type="text" class="mb-2 form-control">
                                 <label>Tình Trạng</label>
-                                <input v-bind:value="xe_edit.tinh_trang" type="text" class="mb-2 form-control">
+                                <input v-bind:value="phong_edit.tinh_trang" type="text" class="mb-2 form-control">
                                 <label>Hàng Ngang</label>
-                                <input v-bind:value="xe_edit.hang_ngang" type="text" class="mb-2 form-control">
+                                <input v-bind:value="phong_edit.hang_ngang" type="text" class="mb-2 form-control">
                                 <label>Hàng Dọc</label>
-                                <input v-bind:value="xe_edit.hang_doc" type="text" class="mb-2 form-control">
+                                <input v-bind:value="phong_edit.hang_doc" type="text" class="mb-2 form-control">
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -73,8 +73,8 @@
     new Vue({
         el  :   '#xxx',
         data:   {
-            list_xe  :   [],
-            xe_edit  :   {},
+            list_phong  :   [],
+            phong_edit  :   {},
         },
         created(){
             this.loadData();
@@ -82,9 +82,9 @@
         methods: {
             loadData() {
                 axios
-                    .get('/admin/xe/data')
+                    .get('/admin/phong/data')
                     .then((res) => {
-                        this.list_xe = res.data.list;
+                        this.list_phong = res.data.list;
                     });
             },
         },

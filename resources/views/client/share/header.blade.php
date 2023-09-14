@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6 d-none d-md-block">
                     <div class="header-top-subs">
-                        <p>Bến xe trung tâm<span>Thành Phố Đà Nẵng</span></p>
+                        <p>Công Ty Cổ Phần <span>DZFullStack</span></p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -49,9 +49,9 @@
                                     <ul class="navigation">
                                         <li class="menu-item-has-children"><a href="/">Trang Chủ</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Chuyến Xe Đang Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Phim Đang Chiếu</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Chuyến Xe Sắp Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Phim Sắp Chiếu</a>
                                         </li>
                                         <li class="menu-item-has-children"><a href="/bai-viet">Bài Viết</a>
                                         </li>
@@ -65,7 +65,7 @@
                                         <div class="footer-search">
                                             <form action="/tim-kiem" method="POST">
                                                 @csrf
-                                                <input type="text" name="search" placeholder="Nhập Tên Xe">
+                                                <input type="text" name="search" placeholder="Nhập Tên Phim">
                                                 <button type="submit"><i class="fas fa-search"></i></button>
                                             </form>
                                         </div>

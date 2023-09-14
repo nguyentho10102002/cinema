@@ -31,7 +31,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 d-none d-md-block">
                         <div class="header-top-subs">
-                            <p>Bến xe trung tâm <span>Thành Phố Đà Nẵng</span></p>
+                            <p>Công Ty Cổ Phần <span>DZFullStack</span></p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -71,9 +71,9 @@
                                     <ul class="navigation">
                                         <li class="active menu-item-has-children"><a href="/">Trang Chủ</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Xe Đang Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-dang-chieu">Phim Đang Chiếu</a>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Xe Sắp Chạy</a>
+                                        <li class="menu-item-has-children"><a href="/phim-sap-chieu">Phim Sắp Chiếu</a>
                                         </li>
                                         <li class="menu-item-has-children"><a href="/bai-viet">Bài Viết</a>
                                         </li>
@@ -86,7 +86,7 @@
                                             <div class="footer-search">
                                                 <form action="/tim-kiem" method="POST">
                                                     @csrf
-                                                    <input type="text" name="search" placeholder="Nhập Tên Xe Bạn Muốn Tìm Kiếm">
+                                                    <input type="text" name="search" placeholder="Nhập Tên Phim">
                                                     <button type="submit"><i class="fas fa-search"></i></button>
                                                 </form>
                                             </div>
@@ -152,111 +152,114 @@
         {{-- <section class="slider-area slider-bg" data-background="{{ isset($config->bg_homepage) ? $config->bg_homepage : '/assets_client/img/banner/s_slider_bg.jpg'}}"> --}}
         <section class="slider-area slider-bg" style="background-image: url('{{ isset($config->bg_homepage) ? $config->bg_homepage : '/assets_client/img/banner/s_slider_bg.jpg'}}')">
             <div class="slider-active">
-                @if(isset($chuyenxe_1))
+                @if(isset($phim_1))
                 <div class="slider-item">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-6 order-0 order-lg-2">
                                 <div class="slider-img text-center text-lg-right" data-animation="fadeInRight"
                                     data-delay="1s">
-                                    <img src="{{ $chuyenxe_1->avatar }}" alt="">
+                                    <img src="{{ $phim_1->avatar }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-content">
-                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">BẾN XE TRUNG TÂM</h6>
-                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $chuyenxe_1->ten_nha_xe }}</h2>
+                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">DZFULLSTACK</h6>
+                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $phim_1->ten_phim }}</h2>
                                     <div class="banner-meta" data-animation="fadeInUp" data-delay=".6s">
                                         <ul>
                                             <li class="quality">
-                                                <span>{{ $chuyenxe_1->loai_xe }}</span>
-                                                <span>Đà Nẵng - Quảng Bình</span>
+                                                <span>{{ $phim_1->the_loai }}</span>
+                                                <span>hd</span>
                                             </li>
                                             <li class="category">
-                                                {{ $chuyenxe_1->noi_bat_dau }}
-                                            </li>
-                                            <li class="category">
-                                                {{ $chuyenxe_1->noi_ket_thuc }}
+                                                {{ $phim_1->dien_vien }}
                                             </li>
                                             <li class="release-time">
-                                                <span><i class="far fa-calendar-alt"></i> {{ $chuyenxe_1->ngay_bat_dau_chay }}</span>
-                                                <span><i class="far fa-clock"></i> {{ $chuyenxe_1->thoi_gian_chay }} min</span>
+                                                <span><i class="far fa-calendar-alt"></i> {{ $phim_1->ngay_khoi_chieu }}</span>
+                                                <span><i class="far fa-clock"></i> {{ $phim_1->thoi_luong }} min</span>
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="{{ $chuyenxe_1->trailer }}"
+                                    <a href="{{ $phim_1->trailer }}"
                                         class="banner-btn btn popup-video" data-animation="fadeInUp"
-                                        data-delay=".8s"><i class="fas fa-play"></i>Xem giới thiệu</a>
+                                        data-delay=".8s"><i class="fas fa-play"></i> Watch Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endif
-                @if(isset($chuyen_xe_2))
+                @if(isset($phim_2))
                 <div class="slider-item">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-6 order-0 order-lg-2">
                                 <div class="slider-img text-center text-lg-right" data-animation="fadeInRight"
                                     data-delay="1s">
-                                    <img src="{{ $chuyen_xe_2->avatar }}" alt="">
+                                    <img src="{{ $phim_2->avatar }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-content">
-                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">BẾN XE TRUNG TÂM</h6>
-                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $chuyen_xe_2->ten_nha_xe }}</h2>
+                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">DZFULLSTACK</h6>
+                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $phim_2->ten_phim }}</h2>
                                     <div class="banner-meta" data-animation="fadeInUp" data-delay=".6s">
                                         <ul>
                                             <li class="quality">
-                                                <span>{{ $chuyen_xe_2->loai_xe }}</span>
-                                                <span>Đà Nẵng - Quảng Trị</span>
+                                                <span>{{ $phim_2->the_loai }}</span>
+                                                <span>hd</span>
+                                            </li>
+                                            <li class="category">
+                                                {{ $phim_2->dien_vien }}
                                             </li>
                                             <li class="release-time">
-                                                <span><i class="far fa-calendar-alt"></i> {{ $chuyen_xe_2->ngay_bat_dau_chay }}</span>
-                                                <span><i class="far fa-clock"></i> {{ $chuyen_xe_2->thoi_gian_chay }} min</span>
+                                                <span><i class="far fa-calendar-alt"></i> {{ $phim_2->ngay_khoi_chieu }}</span>
+                                                <span><i class="far fa-clock"></i> {{ $phim_2->thoi_luong }} min</span>
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="{{ $chuyen_xe_2->trailer }}"
+                                    <a href="{{ $phim_2->trailer }}"
                                         class="banner-btn btn popup-video" data-animation="fadeInUp"
-                                        data-delay=".8s"><i class="fas fa-play"></i>Xem giới thiệu</a>
+                                        data-delay=".8s"><i class="fas fa-play"></i> Watch Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endif
-                @if(isset($chuyen_xe_3))
+                @if(isset($phim_3))
                 <div class="slider-item">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-6 order-0 order-lg-2">
                                 <div class="slider-img text-center text-lg-right" data-animation="fadeInRight"
                                     data-delay="1s">
-                                    <img src="{{ $chuyen_xe_3->avatar }}" alt="">
+                                    <img src="{{ $phim_3->avatar }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-content">
-                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">BẾN XE TRUNG TÂM</h6>
-                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $chuyen_xe_3->ten_nha_xe }}</h2>
+                                    <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">DZFULLSTACK</h6>
+                                    <h2 class="title" data-animation="fadeInUp" data-delay=".4s">{{ $phim_3->ten_phim }}</h2>
                                     <div class="banner-meta" data-animation="fadeInUp" data-delay=".6s">
                                         <ul>
                                             <li class="quality">
-                                                <span>{{ $chuyen_xe_3->loai_xe }}</span>
-                                                <span>Đà Nẵng - Đắk  Lắk</span>
+                                                <span>{{ $phim_3->the_loai }}</span>
+                                                <span>hd</span>
+                                            </li>
+                                            <li class="category">
+                                                {{ $phim_3->dien_vien }}
                                             </li>
                                             <li class="release-time">
-                                                <span><i class="far fa-calendar-alt"></i> {{ $chuyen_xe_3->ngay_bat_dau_chay }}</span>
-                                                <span><i class="far fa-clock"></i> {{ $chuyen_xe_3->thoi_gian_chay }} min</span>
+                                                <span><i class="far fa-calendar-alt"></i> {{ $phim_3->ngay_khoi_chieu }}</span>
+                                                <span><i class="far fa-clock"></i> {{ $phim_3->thoi_luong }} min</span>
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="{{ $chuyen_xe_3->trailer }}"
+                                    <a href="{{ $phim_3->trailer }}"
                                         class="banner-btn btn popup-video" data-animation="fadeInUp"
-                                        data-delay=".8s"><i class="fas fa-play"></i>Xem giới thiệu</a>
+                                        data-delay=".8s"><i class="fas fa-play"></i> Watch Now</a>
                                 </div>
                             </div>
                         </div>
@@ -273,8 +276,8 @@
                 <div class="row align-items-end mb-55">
                     <div class="col-lg-6">
                         <div class="section-title title-style-three text-center text-lg-left">
-                            <span class="sub-title">BẾN XE TRUNG TÂM</span>
-                            <h2 class="title">Xe Nổi Bật</h2>
+                            <span class="sub-title">DZFullStack</span>
+                            <h2 class="title">Phim Nổi Bật</h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -282,11 +285,11 @@
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="dangChieu-tab" data-toggle="tab" href="#dangChieu"
-                                        role="tab" aria-controls="tvShow" aria-selected="true">Xe Đang Chạy</a>
+                                        role="tab" aria-controls="tvShow" aria-selected="true">Phim Đang Chiếu</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="sapChieu-tab" data-toggle="tab" href="#sapChieu"
-                                        role="tab" aria-controls="movies" aria-selected="false">Xe Sắp Chạy</a>
+                                        role="tab" aria-controls="movies" aria-selected="false">Phim Sắp Chiếu</a>
                                 </li>
                             </ul>
                         </div>
@@ -296,11 +299,11 @@
                     <div class="tab-pane fade show active" id="dangChieu" role="tabpanel"
                         aria-labelledby="dangChieu-tab">
                         <div class="ucm-active-two owl-carousel">
-                            @foreach ($list_chuyen_xe as $key => $value )
+                            @foreach ($list_phim as $key => $value )
                                 @if ($value->tinh_trang == 1)
                                 <div class="movie-item movie-item-two mb-30">
                                     <div class="movie-poster">
-                                        <a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}"><img src="{{ $value->avatar }}"
+                                        <a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}"><img src="{{ $value->avatar }}"
                                                 alt=""></a>
                                     </div>
                                     <div class="movie-content">
@@ -311,14 +314,13 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                         </div>
-                                        <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}">{{ $value->ten_nha_xe }}</a></h5>
-                                        <span class="rel">{{ $value->noi_xuat_phat }}</span>
-                                        <span class="rel">{{ $value->noi_ket_thuc }}</span>
+                                        <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}">{{ $value->ten_phim }}</a></h5>
+                                        <span class="rel">{{ $value->dao_dien }}</span>
                                         <div class="movie-content-bottom">
                                             <ul>
                                                 <li class="tag">
-                                                    {{-- <a href="#">HD</a> --}}
-                                                    <span class="like mt-1">{{ $value->thoi_gian_chay }} min</span>
+                                                    <a href="#">HD</a>
+                                                    <span class="like mt-1">{{ $value->thoi_luong }} min</span>
                                                 </li>
                                                 <li>
                                                     <span class="like"><i class="fas fa-thumbs-up"></i> 3.5</span>
@@ -333,11 +335,11 @@
                     </div>
                     <div class="tab-pane fade" id="sapChieu" role="tabpanel" aria-labelledby="sapChieu-tab">
                         <div class="ucm-active-two owl-carousel">
-                            @foreach ($list_chuyen_xe as $key => $value )
+                            @foreach ($list_phim as $key => $value )
                                 @if ($value->tinh_trang == 2)
                                 <div class="movie-item movie-item-two mb-30">
                                     <div class="movie-poster">
-                                        <a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}"><img src="{{ $value->avatar }}"
+                                        <a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}"><img src="{{ $value->avatar }}"
                                                 alt=""></a>
                                     </div>
                                     <div class="movie-content" >
@@ -348,13 +350,13 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                         </div>
-                                        <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}">{{ $value->ten_nha_xe }}</a></h5>
-                                        <span class="rel">{{ $value->noi_xuat_phat }}</span>
+                                        <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}">{{ $value->ten_phim }}</a></h5>
+                                        <span class="rel">{{ $value->dao_dien }}</span>
                                         <div class="movie-content-bottom">
                                             <ul>
                                                 <li class="tag">
                                                     <a href="#">HD</a>
-                                                    <span class="like">{{ $value->thoi_gian_chay }} min</span>
+                                                    <span class="like">{{ $value->thoi_luong }} min</span>
                                                 </li>
                                                 <li>
                                                     <span class="like"><i class="fas fa-thumbs-up"></i> 3.5</span>
@@ -404,20 +406,20 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="section-title title-style-three text-center mb-70">
-                            <span class="sub-title">BẾN XE TRUNG TÂM</span>
-                            <h2 class="title">Các Chuyến Xe Gần Đây</h2>
+                            <span class="sub-title">DZFullStack</span>
+                            <h2 class="title">Các Phim Gần Đây</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row movie-item-row">
-                    @foreach ($list_chuyen_xe as $key => $value)
+                    @foreach ($list_phim as $key => $value)
                         @if ($value->tinh_trang != 2)
                         <div class="custom-col">
                             <div class="movie-item movie-item-two">
                                 <div class="movie-poster">
                                     <img src="{{ $value->avatar }}" alt="">
                                     <ul class="overlay-btn">
-                                        <li><a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}" class="btn">Xem Chi Tiết</a></li>
+                                        <li><a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}" class="btn">Xem Chi Tiết</a></li>
                                     </ul>
                                 </div>
                                 <div class="movie-content">
@@ -428,13 +430,13 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_nha_xe}}-{{$value->id}}">{{ $value->ten_nha_xe }}</a></h5>
+                                    <h5 class="title"><a href="/chi-tiet-phim/{{$value->slug_ten_phim}}-{{$value->id}}">{{ $value->ten_phim }}</a></h5>
                                     <span class="rel">Adventure</span>
                                     <div class="movie-content-bottom">
                                         <ul>
                                             <li class="tag">
                                                 <a href="#">HD</a>
-                                                <span class="like mt-1">{{ $value->thoi_gian_chay }} min</span>
+                                                <span class="like mt-1">{{ $value->thoi_luong }} min</span>
                                             </li>
                                             <li>
                                                 <span class="like"><i class="fas fa-thumbs-up"></i> 3.5</span>
@@ -559,9 +561,9 @@
                                         <ul class="navigation">
                                             <li class="active menu-item-has-children"><a href="/">Trang Chủ</a>
                                             </li>
-                                            <li class="menu-item-has-children"><a href="/phim-dang-chieu">Chuyến Xe Đang Chạy</a>
+                                            <li class="menu-item-has-children"><a href="/phim-dang-chieu">Phim Đang Chiếu</a>
                                             </li>
-                                            <li class="menu-item-has-children"><a href="/phim-sap-chieu">Chuyến Xe Sắp Chạy</a>
+                                            <li class="menu-item-has-children"><a href="/phim-sap-chieu">Phim Sắp Chiếu</a>
                                             </li>
                                             <li class="menu-item-has-children"><a href="/bai-viet">Bài Viết</a>
                                             </li>

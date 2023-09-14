@@ -24,26 +24,26 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label>Xe Hiển Thị Trang Chủ</label>
-                        <select class="form-control" name="id_chuyen_xe">
+                        <label>Phim Hiển Thị Trang Chủ</label>
+                        <select class="form-control" name="id_phim">
                             @foreach ($danhSachPhim as $key => $value)
-                            <option {{ isset($config->id_chuyen_xe) && $value->id == $config->id_chuyen_xe ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_nha_xe }}</option>
+                            <option {{ isset($config->id_phim) && $value->id == $config->id_phim ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_phim }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-3">
-                        <label>Xe Hiển Thị Trang Chủ</label>
-                        <select class="form-control" name="chuyen_xe_2">
+                        <label>Phim Hiển Thị Trang Chủ</label>
+                        <select class="form-control" name="phim_2">
                             @foreach ($danhSachPhim as $key => $value)
-                            <option {{ isset($config->chuyen_xe_2) && $value->id == $config->chuyen_xe_2 ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_nha_xe }}</option>
+                            <option {{ isset($config->phim_2) && $value->id == $config->phim_2 ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_phim }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-3">
-                        <label>Xe Hiển Thị Trang Chủ</label>
-                        <select class="form-control" name="chuyen_xe_3">
+                        <label>Phim Hiển Thị Trang Chủ</label>
+                        <select class="form-control" name="phim_3">
                             @foreach ($danhSachPhim as $key => $value)
-                            <option {{ isset($config->chuyen_xe_3) && $value->id == $config->chuyen_xe_3 ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_nha_xe }}</option>
+                            <option {{ isset($config->phim_3) && $value->id == $config->phim_3 ? 'selected'  : ''}} value="{{ $value->id }}">{{ $value->ten_phim }}</option>
                             @endforeach
                         </select>
                     </div>

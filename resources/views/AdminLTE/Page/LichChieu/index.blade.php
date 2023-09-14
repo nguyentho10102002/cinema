@@ -4,25 +4,25 @@
     <div class="col-md-12">
         <div class="card border-primary border-bottom border-3 border-0">
             <div class="card-header">
-                <strong> Thêm Mới Lịch Chạy </strong>
+                <strong> Thêm Mới Lịch Chiếu </strong>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label">Chọn Tên Nhà Xe</label>
+                        <label class="form-label">Chọn Phim</label>
                         <select v-on:change="updateThoiGian()" v-model="create_lich.id_phim_xxx" class="form-control">
                             <template v-for="(value, key) in list_phim" v-if="value.tinh_trang > 0">
-                                <option v-bind:value="{id_chuyen_xe : value.id, thoi_luong: value.thoi_luong}">@{{ value.ten_nha_xe }}</option>
+                                <option v-bind:value="{id_phim : value.id, thoi_luong: value.thoi_luong}">@{{ value.ten_phim }}</option>
                             </template>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Thời Gian Chạy Chính</label>
-                        <input v-model="create_lich.thoi_gian_chay_chinh" type="number" min="0" class="form-control">
+                        <label class="form-label">Thời Lượng Chiếu Chính</label>
+                        <input v-model="create_lich.thoi_gian_chieu_chinh" type="number" min="0" class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Thời Gian Nghỉ Chân</label>
-                        <input v-model="create_lich.thoi_gian_nghi_chan" type="number" min="0" class="form-control">
+                        <label class="form-label">Thời Lượng Quảng Cáo</label>
+                        <input v-model="create_lich.thoi_gian_quang_cao" type="number" min="0" class="form-control">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -76,17 +76,17 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Chọn Xe</label>
-                        <select v-model="create_lich.id_xe" class="form-control">
+                        <label class="form-label">Chọn Phòng Chiếu</label>
+                        <select v-model="create_lich.id_phong" class="form-control">
                             <template v-for="(value, key) in list_phong" v-if="value.tinh_trang == 1">
-                                <option v-bind:value="value.id">@{{ value.ten_xe }}</option>
+                                <option v-bind:value="value.id">@{{ value.ten_phong }}</option>
                             </template>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-end">
-                <button v-on:click="createLichChieu()" class="btn btn-primary">Thêm Mới Lịch Chạy</button>
+                <button v-on:click="createLichChieu()" class="btn btn-primary">Thêm Mới Lịch Chiếu</button>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                 axios
                     .post('/admin/lich-chieu/index', this.create_lich)
                     .then((res) => {
-                        toastr.success('Đã thêm mới lịch chạy thành công!');
+                        toastr.success('Đã thêm mới lịch chiếu thành công!');
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {
@@ -128,14 +128,14 @@
             },
             loadDataPhong() {
                 axios
-                    .get('/admin/xe/data')
+                    .get('/admin/phong/data')
                     .then((res) => {
                         this.list_phong = res.data.list;
                     });
             },
             updateThoiGian() {
-                this.create_lich.thoi_gian_chay_chinh = this.create_lich.id_phim_xxx.thoi_luong;
-                this.create_lich.id_chuyen_xe = this.create_lich.id_phim_xxx.id_chuyen_xe;
+                this.create_lich.thoi_gian_chieu_chinh = this.create_lich.id_phim_xxx.thoi_luong;
+                this.create_lich.id_phim = this.create_lich.id_phim_xxx.id_phim;
             }
         },
     });

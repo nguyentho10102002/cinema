@@ -14,6 +14,6 @@ class Ghe extends Model
     protected $fillable = [
         'ten_ghe',
         'tinh_trang',
-        'id_xe',
+        'id_phong',
     ];
 }

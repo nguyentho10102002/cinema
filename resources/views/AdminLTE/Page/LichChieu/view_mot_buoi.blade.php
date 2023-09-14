@@ -4,30 +4,30 @@
     <div class="col-md-12">
         <div class="card border-danger border-bottom border-3 border-0">
             <div class="card-header">
-                Tạo Buổi Chạy
+                Tạo Buổi Chiếu Phim
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="form-label">Chọn chuyến xe</label>
+                        <label class="form-label">Chọn Phim</label>
                         <select v-on:change="updateThoiGian()" v-model="create_lich.id_phim_xxx" class="form-control">
                             <template v-for="(value, key) in list_phim" v-if="value.tinh_trang > 0">
-                                <option v-bind:value="{id_chuyen_xe : value.id, thoi_luong: value.thoi_luong}">@{{ value.ten_nha_xe }}</option>
+                                <option v-bind:value="{id_phim : value.id, thoi_luong: value.thoi_luong}">@{{ value.ten_phim }}</option>
                             </template>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Thời Lượng Chạy</label>
-                        <input v-model="create_lich.thoi_gian_chay_chinh" type="number" min="0" class="form-control">
+                        <label class="form-label">Thời Lượng Chiếu Chính</label>
+                        <input v-model="create_lich.thoi_gian_chieu_chinh" type="number" min="0" class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Thời Lượng Nghỉ Chân</label>
-                        <input v-model="create_lich.thoi_gian_nghi_chan" type="number" min="0" class="form-control">
+                        <label class="form-label">Thời Lượng Quảng Cáo</label>
+                        <input v-model="create_lich.thoi_gian_quang_cao" type="number" min="0" class="form-control">
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-3">
-                        <label class="form-label">Ngày chạy</label>
+                        <label class="form-label">Ngày Chiếu Phim</label>
                         <input v-model="create_lich.ngay_chieu" type="date" class="form-control">
                     </div>
                     <div class="col-md-3">
@@ -39,32 +39,32 @@
                         <input v-model="create_lich.gio_ket_thuc" type="time" class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Xe chạy chuyến</label>
-                        <select v-model="create_lich.id_xe" class="form-control">
+                        <label class="form-label">Phòng Chiếu Phim</label>
+                        <select v-model="create_lich.id_phong" class="form-control">
                             <template v-for="(value, key) in list_phong" v-if="value.tinh_trang == 1">
-                                <option v-bind:value="value.id">@{{ value.ten_xe }}</option>
+                                <option v-bind:value="value.id">@{{ value.ten_phong }}</option>
                             </template>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-end">
-                <button v-on:click="themLichChieu()" class="btn btn-primary">Thêm Lịch Chạy</button>
+                <button v-on:click="themLichChieu()" class="btn btn-primary">Thêm Lịch Chiếu</button>
             </div>
         </div>
     </div>
     <div class="col-md-12 mt-5">
         <div class="card">
             <div class="card-header">
-                Danh Sách Các Buổi Chạy
+                Danh Sách Các Buổi Chiếu
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead class="bg-primary">
                         <tr>
                             <th class="text-center">#</th>
-                            <th class="text-center">Tên nhà xe</th>
-                            <th class="text-center">Tên xe</th>
+                            <th class="text-center">Phim Chiếu</th>
+                            <th class="text-center">Phòng Chiếu</th>
                             <th class="text-center">Bắt Đầu</th>
                             <th class="text-center">Kết Thúc</th>
                             <th class="text-center">Action</th>
@@ -73,8 +73,8 @@
                     <tbody>
                         <tr v-for="(v, k) in list_lich">
                             <th class="align-middle text-center">@{{ k + 1 }}</th>
-                            <td class="align-middle">@{{ v.ten_nha_xe }}</td>
-                            <td class="align-middle">@{{ v.ten_xe }}</td>
+                            <td class="align-middle">@{{ v.ten_phim }}</td>
+                            <td class="align-middle">@{{ v.ten_phong }}</td>
                             <td class="align-middle text-center">@{{ v.thoi_gian_bat_dau }}</td>
                             <td class="align-middle text-center">@{{ v.thoi_gian_ket_thuc }}</td>
                             <td class="text-center">
@@ -92,7 +92,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <p>Bạn có muốn xóa lịch chạy <b class="text-danger">@{{ delete_lich.ten_nha_xe }}</b> tại xe <b class="text-danger">@{{ delete_lich.ten_xe }}</b> này không?</p>
+                            <p>Bạn có muốn xóa lịch chiếu phim <b class="text-danger">@{{ delete_lich.ten_phim }}</b> tại phòng <b class="text-danger">@{{ delete_lich.ten_phong }}</b> này không?</p>
                             <p>Thời gian chiếu dự kiến từ @{{ delete_lich.thoi_gian_bat_dau }} đến @{{ delete_lich.thoi_gian_ket_thuc }}</p>
                             </div>
                             <div class="modal-footer">
@@ -112,25 +112,25 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class="form-label">Chọn Chuyến Xe</label>
-                                        <select v-on:change="updateThoiGian()" v-model="update_lich.id_chuyen_xe" class="form-control">
+                                        <label class="form-label">Chọn Phim</label>
+                                        <select v-on:change="updateThoiGian()" v-model="update_lich.id_phim" class="form-control">
                                             <template v-for="(value, key) in list_phim" v-if="value.tinh_trang > 0">
-                                                <option v-bind:value="value.id">@{{ value.ten_nha_xe }}</option>
+                                                <option v-bind:value="value.id">@{{ value.ten_phim }}</option>
                                             </template>
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Thời Lượng Chạy Chính</label>
-                                        <input v-model="update_lich.thoi_gian_chay_chinh" type="number" min="0" class="form-control">
+                                        <label class="form-label">Thời Lượng Chiếu Chính</label>
+                                        <input v-model="update_lich.thoi_gian_chieu_chinh" type="number" min="0" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Thời Lượng Nghỉ Chân</label>
-                                        <input v-model="update_lich.thoi_gian_nghi_chan" type="number" min="0" class="form-control">
+                                        <label class="form-label">Thời Lượng Quảng Cáo</label>
+                                        <input v-model="update_lich.thoi_gian_quang_cao" type="number" min="0" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-3">
-                                        <label class="form-label">Ngày Chạy</label>
+                                        <label class="form-label">Ngày Chiếu Phim</label>
                                         <input v-model="update_lich.ngay_chieu" type="date" class="form-control">
                                     </div>
                                     <div class="col-md-3">
@@ -142,10 +142,10 @@
                                         <input v-model="update_lich.gio_ket_thuc" type="time" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Xe Chạy</label>
-                                        <select v-model="update_lich.id_xe" class="form-control">
+                                        <label class="form-label">Phòng Chiếu Phim</label>
+                                        <select v-model="update_lich.id_phong" class="form-control">
                                             <template v-for="(value, key) in list_phong" v-if="value.tinh_trang == 1">
-                                                <option v-bind:value="value.id">@{{ value.ten_xe }}</option>
+                                                <option v-bind:value="value.id">@{{ value.ten_phong }}</option>
                                             </template>
                                         </select>
                                     </div>
@@ -170,7 +170,7 @@
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <div class="alert alert-primary" role="alert">
-                                        <b style="font-size: 24px">ĐẦU XE</b>
+                                        <b style="font-size: 24px">MÀN HÌNH</b>
                                      </div>
                                 </div>
                                 <div class="col-md-12">
@@ -236,9 +236,9 @@
             },
             layDataGhePhong(v) {
                 axios
-                    .get('/admin/xe/data-ghe/' + v.id_xe)
+                    .get('/admin/phong/data-ghe/' + v.id_phong)
                     .then((res) => {
-                        this.tt_phong = res.data.thong_tin_Xe;
+                        this.tt_phong = res.data.thong_tin_phong;
                     });
 
                 axios
@@ -282,7 +282,7 @@
                 axios
                     .post('/admin/lich-chieu/xoa-lich', this.delete_lich)
                     .then((res) => {
-                        toastr.success('Đã xóa lịch chạy thành công!');
+                        toastr.success('Đã xóa lịch chiếu thành công!');
                         this.loadLichChieu();
                     })
                     .catch((res) => {
@@ -307,14 +307,14 @@
             },
             loadDataPhong() {
                 axios
-                    .get('/admin/xe/data')
+                    .get('/admin/phong/data')
                     .then((res) => {
                         this.list_phong = res.data.list;
                     });
             },
             updateThoiGian() {
                 this.create_lich.thoi_gian_chieu_chinh = this.create_lich.id_phim_xxx.thoi_luong;
-                this.create_lich.id_chuyen_xe = this.create_lich.id_phim_xxx.id_chuyen_xe;
+                this.create_lich.id_phim = this.create_lich.id_phim_xxx.id_phim;
             },
         },
     });

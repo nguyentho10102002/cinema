@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\GheBan;
 use App\Models\LichChieu;
-use App\Models\Xe;
+use App\Models\Phong;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

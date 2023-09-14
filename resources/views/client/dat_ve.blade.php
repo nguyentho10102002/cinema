@@ -5,7 +5,7 @@
         <div class="row align-items-center position-relative">
             <div class="col-md-12">
                 <div class="alert alert-warning text-center" role="alert">
-                    ĐẦU XE
+                    MÀN HÌNH FULLHD KHÔNG CHE
                 </div>
             </div>
             <div class="col-md-12">
@@ -45,7 +45,7 @@
             hang_doc    :   0,
             hang_ngang  :   0,
             ds_ghe      :   [],
-            id_lich_trinh : {{ $id_lich_trinh }},
+            id_lich_chieu : {{ $id_lich_chieu }},
             id_login    :   {{ $user_login }}
         },
         created() {
@@ -54,7 +54,7 @@
         methods:    {
             loadData() {
                 axios
-                    .get('/client/hien-thi-ghe-ban/' + this.id_lich_trinh)
+                    .get('/client/hien-thi-ghe-ban/' + this.id_lich_chieu)
                     .then((res) => {
                         this.hang_doc   = res.data.hang_doc;
                         this.hang_ngang = res.data.hang_ngang;

@@ -4,41 +4,41 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    Thêm Mới Chuyến Xe
+                    Thêm Mới Phim
                 </div>
                 <div class="card-body">
-                    <form id="createChuyenXeForm">
+                    <form id="createPhimForm">
                         <div class="form-group mt-1">
-                            <label>Tên Chuyến Xe</label>
-                            <input v-on:keyup="chuyenThangTenChuyenXeSangSlug()" v-model="them_moi.ten_nha_xe" type="text" class="form-control" placeholder="Nhập vào tên nhà Xe">
+                            <label>Tên Phim</label>
+                            <input v-on:keyup="chuyenThangTenPhimSangSlug()" v-model="them_moi.ten_phim" type="text" class="form-control" placeholder="Nhập vào tên phim">
                         </div>
                         <div class="form-group mt-3">
-                            <label>Slug Tên Chuyến Xe</label>
-                            <input v-model="slug" type="text" class="form-control" placeholder="Nhập vào slug tên nhà Xe">
+                            <label>Slug Tên Phim</label>
+                            <input v-model="slug" type="text" class="form-control" placeholder="Nhập vào slug tên phim">
                         </div>
                         <div class="form-group mt-3">
-                            <label>Ngày Bắt Đầu Hoạt Động</label>
-                            <input v-model="them_moi.ngay_bat_dau_chay" type="date" class="form-control" placeholder="Nhập vào ngày bắt đầu hoạt động">
+                            <label>Ngày Khởi Chiếu</label>
+                            <input v-model="them_moi.ngay_khoi_chieu" type="date" class="form-control" placeholder="Nhập vào tên phim">
                         </div>
                         <div class="form-group mt-3">
-                            <label>Nơi Xuất Phát</label>
-                            <input v-model="them_moi.noi_xuat_phat" type="text" class="form-control" placeholder="Nhập vào nơi xuất phát">
+                            <label>Đạo Diễn</label>
+                            <input v-model="them_moi.dao_dien" type="text" class="form-control" placeholder="Nhập vào tên đạo diễn">
                         </div>
                         <div class="form-group mt-3">
-                            <label>Nơi Kết Thúc</label>
-                            <input v-model="them_moi.noi_ket_thuc" type="text" class="form-control" placeholder="Nhập vào nơi kết thúc">
+                            <label>Diễn Viên</label>
+                            <input v-model="them_moi.dien_vien" type="text" class="form-control" placeholder="Nhập vào tên diễn viên">
                         </div>
                         <div class="form-group mt-3">
-                            <label>Thời Gian Chạy</label>
-                            <input v-model="them_moi.thoi_gian_chay" type="number" class="form-control" placeholder="Nhập vào phút">
+                            <label>Thời Lượng</label>
+                            <input v-model="them_moi.thoi_luong" type="number" class="form-control" placeholder="Nhập vào phút">
                         </div>
                         <div class="form-group mt-3">
                             <label>Mô Tả</label>
                             <textarea name="mo_ta" id="mo_ta" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group mt-3">
-                            <label>Loại Xe</label>
-                            <input v-model="them_moi.loai_xe" type="text" class="form-control" placeholder="Nhập vào loại xe của nhà xe">
+                            <label>Thể Loại</label>
+                            <input v-model="them_moi.the_loai" type="text" class="form-control" placeholder="Nhập vào thể loại">
                         </div>
                         <div class="form-group mt-3">
                             <label>Avatar</label>
@@ -53,19 +53,19 @@
                             <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                         </div>
                         <div class="form-group mt-3">
-                            <label>Giới Thiệu</label>
+                            <label>Trailer</label>
                             <input v-model="them_moi.trailer" type="text" class="form-control" placeholder="Nhập vào link trailer">
                         </div>
                         <div class="form-group mt-3">
                             <label>Tình Trạng</label>
                             <select v-model="them_moi.tinh_trang" class="form-control">
-                                <option value="1">Đang Chạy</option>
-                                <option value="2">Sắp Chạy</option>
-                                <option value="0">Ngưng Hoạt Động</option>
+                                <option value="1">Đang Chiếu</option>
+                                <option value="2">Sắp Chiếu</option>
+                                <option value="0">Ngưng Chiếu</option>
                             </select>
                         </div>
                         <div class="form-group mt-3 text-end">
-                           <button class="btn btn-primary" type="button" v-on:click="createChuyenXe()">Thêm Mới Chuyến Xe</button>
+                           <button class="btn btn-primary" type="button" v-on:click="createPhim()">Thêm Mới Phim</button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Danh Sách Chuyến Xe
+                    Danh Sách Phim
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -82,14 +82,14 @@
                             <thead class="bg-primary">
                                 <tr class="text-nowrap">
                                     <th>#</th>
-                                    <th>Tên Chuyến Xe</th>
+                                    <th>Tên Phim</th>
                                     <th>Slug</th>
-                                    <th>Ngày Bắt Đầu Hoạt Động</th>
-                                    <th>Nơi Xuất Phát</th>
-                                    <th>Nơi Kết Thúc</th>
-                                    <th>Thời Gian Chạy</th>
+                                    <th>Ngày Khởi Chiếu</th>
+                                    <th>Đạo Diễn</th>
+                                    <th>Diễn Viên</th>
+                                    <th>Thời Lượng</th>
                                     <th>Mô Tả</th>
-                                    <th>Loại Xe</th>
+                                    <th>Thể Loại</th>
                                     <th>Avatar</th>
                                     <th>Trailer</th>
                                     <th>Tình Trạng</th>
@@ -99,29 +99,29 @@
                             <tbody>
                                 <tr v-for="(value, key) in ds_phim">
                                     <th class="align-middle text-center">@{{ key + 1 }}</th>
-                                    <td class="align-middle">@{{ value.ten_nha_xe }}</td>
-                                    <td class="align-middle">@{{ value.slug_ten_nha_xe }}</td>
-                                    <td class="align-middle">@{{ format_date(value.ngay_bat_dau_chay) }}</td>
-                                    <td class="align-middle">@{{ value.noi_xuat_phat }}</td>
-                                    <td class="align-middle">@{{ value.noi_ket_thuc }}</td>
-                                    <td class="align-middle">@{{ value.thoi_gian_chay }}</td>
+                                    <td class="align-middle">@{{ value.ten_phim }}</td>
+                                    <td class="align-middle">@{{ value.slug_ten_phim }}</td>
+                                    <td class="align-middle">@{{ format_date(value.ngay_khoi_chieu) }}</td>
+                                    <td class="align-middle">@{{ value.dao_dien }}</td>
+                                    <td class="align-middle">@{{ value.dien_vien }}</td>
+                                    <td class="align-middle">@{{ value.thoi_luong }}</td>
                                     <td class="align-middle" v-html="value.mo_ta.substring(0, 100)+ '...'"></td>
-                                    <td class="align-middle">@{{ value.loai_xe }}</td>
+                                    <td class="align-middle">@{{ value.the_loai }}</td>
                                     <td class="align-middle">
                                         <button class="btn btn-light" v-on:click="phim_xoa = value" data-bs-toggle="modal" data-bs-target="#hinhAnhModel"><i class="fa-solid fa-image text-success"></i></button>
                                         {{-- <img v-bind:src="value.avatar" class="img-fluid" style="max-width: 200px;"> --}}
                                     </td>
                                     <td class="align-middle text-nowrap">
-                                        <a v-bind:href="value.trailer" target="_blank" class="btn btn-primary">Link Giới Thiệu</a>
+                                        <a v-bind:href="value.trailer" target="_blank" class="btn btn-primary">Link Video</a>
                                     </td>
                                     <td class="align-middle text-nowrap">
-                                        <p class="text-warning" v-if="value.tinh_trang == 0" >Ngưng Hoạt Động</p>
-                                        <p class="text-success" v-if="value.tinh_trang == 1">Đang Chạy</p>
-                                        <p class="text-primary" v-if="value.tinh_trang == 2">Sắp Chạy</p>
+                                        <p class="text-warning" v-if="value.tinh_trang == 0" >Ngưng Chiếu</p>
+                                        <p class="text-success" v-if="value.tinh_trang == 1">Đang Chiếu</p>
+                                        <p class="text-primary" v-if="value.tinh_trang == 2">Sắp Chiếu</p>
                                     </td>
                                     <td class="align-middle text-nowrap">
                                         <button v-on:click="showUpdate(value)" data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-info">Cập Nhật</button>
-                                        <button v-on:click="phim_xoa = value" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa Chuyến Xe</button>
+                                        <button v-on:click="phim_xoa = value" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa Phim</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -129,17 +129,17 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Xóa Chuyến Xe</h5>
+                                      <h5 class="modal-title" id="exampleModalLabel">Xóa Phim</h5>
                                       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                        Bạn chắc chắn muốn xóa chuyến xe này!
+                                        Bạn chắc chắn muốn xóa phim này!
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button v-on:click="xoaPhimTrenServer()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Xóa Chuyến Xe</button>
+                                      <button v-on:click="xoaPhimTrenServer()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Xóa Phim</button>
                                     </div>
                                   </div>
                                 </div>
@@ -169,7 +169,7 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Chuyến Xe</h5>
+                                      <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Phim</h5>
                                       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -177,28 +177,28 @@
                                     <div class="modal-body">
                                         <input v-model="phim_update.id" type="hidden" name="" id="">
                                         <div class="form-group mt-3">
-                                            <label>Tên Chuyến Xe</label>
-                                            <input v-model="phim_update.ten_nha_xe" type="text" class="form-control" placeholder="Nhập vào tên chuyến xe">
+                                            <label>Tên Phim</label>
+                                            <input v-model="phim_update.ten_phim" type="text" class="form-control" placeholder="Nhập vào tên phim">
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label>Slug Tên Chuyến Xe</label>
-                                            <input v-model="phim_update.slug_ten_nha_xe" type="text" class="form-control" placeholder="Nhập vào slug tên chuyến xe">
+                                            <label>Slug Tên Phim</label>
+                                            <input v-model="phim_update.slug_ten_phim" type="text" class="form-control" placeholder="Nhập vào slug tên phim">
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label>Ngày Bắt Đầu Chạy</label>
-                                            <input v-model="phim_update.ngay_bat_dau_chay" type="date" class="form-control" placeholder="Nhập vào ngày bắt đầu chạy">
+                                            <label>Ngày Khởi Chiếu</label>
+                                            <input v-model="phim_update.ngay_khoi_chieu" type="date" class="form-control" placeholder="Nhập vào tên phim">
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label>Nơi Xuất Phát</label>
-                                            <input v-model="phim_update.noi_xuat_phat" type="text" class="form-control" placeholder="Nhập vào tên nơi xuất phát">
+                                            <label>Đạo Diễn</label>
+                                            <input v-model="phim_update.dao_dien" type="text" class="form-control" placeholder="Nhập vào tên đạo diễn">
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label>Nơi Kết Thúc</label>
-                                            <input v-model="phim_update.noi_ket_thuc" type="text" class="form-control" placeholder="Nhập vào tên nơi kết thúc">
+                                            <label>Diễn Viên</label>
+                                            <input v-model="phim_update.dien_vien" type="text" class="form-control" placeholder="Nhập vào tên diễn viên">
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label>Thời Gian Chạy</label>
-                                            <input v-model="phim_update.thoi_gian_chay" type="number" class="form-control" placeholder="Nhập vào phút">
+                                            <label>Thời Lượng</label>
+                                            <input v-model="phim_update.thoi_luong" type="number" class="form-control" placeholder="Nhập vào phút">
                                         </div>
                                         <div class="form-group mt-3">
                                             <label>Mô Tả</label>
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="form-group mt-3">
                                             <label>Thể Loại</label>
-                                            <input v-model="phim_update.loai_xe" type="text" class="form-control" placeholder="Nhập vào thể loại">
+                                            <input v-model="phim_update.the_loai" type="text" class="form-control" placeholder="Nhập vào thể loại">
                                         </div>
                                         <div class="form-group mt-3">
                                             <label>Avatar</label>
@@ -229,15 +229,15 @@
                                         <div class="form-group mt-3">
                                             <label>Tình Trạng</label>
                                             <select v-model="phim_update.tinh_trang" class="form-control">
-                                                <option value="1">Đang Chạy</option>
-                                                <option value="2">Sắp Chạy</option>
-                                                <option value="0">Ngưng Hoạt Động</option>
+                                                <option value="1">Đang Chiếu</option>
+                                                <option value="2">Sắp Chiếu</option>
+                                                <option value="0">Ngưng Chiếu</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button v-on:click="capNhatChuyenXeServer()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật Chuyến Xe</button>
+                                      <button v-on:click="capNhatPhimServer()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật Phim</button>
                                     </div>
                                   </div>
                                 </div>
@@ -271,14 +271,14 @@
                 var text = '<img src="'+ value.avatar + '" style="margin-top:15px;max-height:100px;">'
                 $("#holder_update").html(text);
             },
-            createChuyenXe() {
-                this.them_moi.slug_ten_nha_xe = this.slug;
+            createPhim() {
+                this.them_moi.slug_ten_phim = this.slug;
                 this.them_moi.mo_ta = CKEDITOR.instances['mo_ta'].getData();
                 this.them_moi.avatar = $("#hinh_anh").val();
                 axios
                     .post('/admin/phim/index-vue' , this.them_moi)
                     .then((res) => {
-                        toastr.success('Đã thêm mới chuyến xe thành công!');
+                        toastr.success('Đã thêm mới phim thành công!');
                         this.loadPhim();
                         this.them_moi = {};
                         this.slug = '';
@@ -302,7 +302,7 @@
                     .get('/admin/phim/data')
                     .then((res) => {
                         this.ds_phim = res.data.phim;
-                        console.log(moment(new Date(this.ds_phim[1].ngay_bat_dau_chay)).format("DD/MM/YYYY"));
+                        console.log(moment(new Date(this.ds_phim[1].ngay_khoi_chieu)).format("DD/MM/YYYY"));
                     });
             },
             xoaPhimTrenServer() {
@@ -310,7 +310,7 @@
                     .post('/admin/phim/delete' , this.phim_xoa)
                     .then((res) => {
                         if(res.data.status) {
-                            toastr.success('Đã xóa chuyến xe thành công!');
+                            toastr.success('Đã xóa phim thành công!');
                             this.loadPhim();
                         } else {
                             toastr.error('Có lỗi không mong muốn!');
@@ -322,7 +322,7 @@
                         });
                     });
             },
-            capNhatChuyenXeServer() {
+            capNhatPhimServer() {
                 this.phim_update.mo_ta = CKEDITOR.instances['update_mo_ta'].getData();
                 this.phim_update.avatar = $("#hinh_anh_update").val();
                 axios
@@ -354,8 +354,8 @@
 
                 return str;
             },
-            chuyenThangTenChuyenXeSangSlug() {
-                this.slug = this.toSlug(this.them_moi.ten_nha_xe);
+            chuyenThangTenPhimSangSlug() {
+                this.slug = this.toSlug(this.them_moi.ten_phim);
             },
         },
     });

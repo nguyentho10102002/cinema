@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ghe;
-use App\Models\Xe;
+use App\Models\Phong;
 use Illuminate\Http\Request;
 
-class XeController extends Controller
+class PhongController extends Controller
 {
     public function index()
     {
-        return view('AdminRocker.page.Xe.index');
+        return view('AdminRocker.page.Phong.index');
     }
 
     public function store(Request $request)
     {
-        // 1. Ta sẽ thêm mới
-        $newXe = Xe::create([
-            'ten_xe'     => $request->ten_xe,
+        // 1. Ta sẽ thêm mới phòng
+        $newPhong = Phong::create([
+            'ten_phong'     => $request->ten_phong,
             'tinh_trang'    => $request->tinh_trang,
             'hang_ngang'    => $request->hang_ngang,
             'hang_doc'      => $request->hang_doc,
@@ -30,7 +30,7 @@ class XeController extends Controller
                 Ghe::create([
                     'ten_ghe'       => $ten_ghe,
                     'tinh_trang'    => 1,
-                    'id_xe'      => $newXe->id,
+                    'id_phong'      => $newPhong->id,
                 ]);
             }
         }
@@ -43,17 +43,17 @@ class XeController extends Controller
     public function update(Request $request)
     {
         // dd($request->all());
-        $xe = Xe::where('id', $request->id)->first();
+        $phong = Phong::where('id', $request->id)->first();
 
-        if($xe) {
-            $xe->ten_xe   = $request->ten_xe;
-            $xe->tinh_trang  = $request->tinh_trang;
-            $xe->hang_ngang  = $request->hang_ngang;
-            $xe->hang_doc    = $request->hang_doc;
-            $xe->save();
+        if($phong) {
+            $phong->ten_phong   = $request->ten_phong;
+            $phong->tinh_trang  = $request->tinh_trang;
+            $phong->hang_ngang  = $request->hang_ngang;
+            $phong->hang_doc    = $request->hang_doc;
+            $phong->save();
 
             // Xóa sạch ghế trong phòng
-            Ghe::where('id_xe', $request->id)->delete();
+            Ghe::where('id_phong', $request->id)->delete();
             // Tạo mới lại số ghế $request->hang_doc * $request->hang_ngang
             for($dong = 1; $dong <= $request->hang_ngang; $dong++) {
                 $chu = chr($dong + 64);
@@ -62,7 +62,7 @@ class XeController extends Controller
                     Ghe::create([
                         'ten_ghe'       => $ten_ghe,
                         'tinh_trang'    => 1,
-                        'id_xe'      => $request->id,
+                        'id_phong'      => $request->id,
                     ]);
                 }
             }
@@ -70,13 +70,13 @@ class XeController extends Controller
 
         return response()->json([
             'status' => true,
-            'messs'  => "Cập nhập xe thành công!",
+            'messs'  => "Cập nhập phòng chiếu thành công!",
         ]);
     }
 
     public function getData()
     {
-        $data = Xe::get();
+        $data = Phong::get();
         return response()->json([
             'list'  => $data
         ]);
@@ -84,41 +84,41 @@ class XeController extends Controller
 
     public function changeStatus($id)
     {
-        $xe = Xe::where('id', $id)->first();
+        $phong = Phong::where('id', $id)->first();
 
-        if($xe) {
-            $xe->tinh_trang = !$xe->tinh_trang;
-            $xe->save();
+        if($phong) {
+            $phong->tinh_trang = !$phong->tinh_trang;
+            $phong->save();
         }
     }
 
     public function destroy($id)
     {
-        $xe = Xe::where('id', $id)->first();
+        $phong = Phong::where('id', $id)->first();
 
-        if($xe) {
-            Ghe::where('id_xe', $id)->delete();
-            $xe->delete();
+        if($phong) {
+            Ghe::where('id_phong', $id)->delete();
+            $phong->delete();
         }
     }
 
     public function edit($id)
     {
-        $xe = Xe::where('id', $id)->first();
+        $phong = Phong::where('id', $id)->first();
 
         return response()->json([
-            'data'  => $xe
+            'data'  => $phong
         ]);
     }
 
-    public function getDataGhe($id_xe)
+    public function getDataGhe($id_phong)
     {
-        $xe = Xe::where('id', $id_xe)->first();
-        $data  = Ghe::where('id_xe', $id_xe)->get();
+        $phong = Phong::where('id', $id_phong)->first();
+        $data  = Ghe::where('id_phong', $id_phong)->get();
 
         return response()->json([
             'danh_sach_ghe'     => $data,
-            'thong_tin_Xe'   => $xe,
+            'thong_tin_phong'   => $phong,
         ]);
     }
 }

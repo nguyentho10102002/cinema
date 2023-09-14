@@ -4,18 +4,18 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
-                    Thêm Mới Xe
+                    Thêm Mới Phòng
                 </div>
                 <div class="card-body">
                     <div class="form-group mt-2">
-                        <label>Tên Xe</label>
-                        <input type="text" class="form-control" id="ten_xe" placeholder="Nhập vào tên xe">
+                        <label>Tên Phòng</label>
+                        <input type="text" class="form-control" id="ten_phong" placeholder="Nhập vào tên phòng">
                     </div>
                     <div class="form-group mt-3">
                         <label>Tình Trạng</label>
                         <select id="tinh_trang" class="form-control">
-                            <option value="1">Còn Hoạt Động</option>
-                            <option value="0">Dừng Hoạt Động</option>
+                            <option value="1">Còn Kinh Doanh</option>
+                            <option value="0">Dừng Kinh Doanh</option>
                         </select>
                     </div>
                     <div class="form-group mt-3">
@@ -28,21 +28,21 @@
                     </div>
                 </div>
                 <div class="card-footer text-end">
-                    <button id="add" class="btn btn-primary">Thêm Mới Xe</button>
+                    <button id="add" class="btn btn-primary">Thêm Mới Phòng</button>
                 </div>
             </div>
         </div>
         <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
-                    Danh Sách Các Xe
+                    Danh Sách Các Phòng
                 </div>
                 <div class="card-body">
                     <table id="table" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">Tên xe</th>
+                                <th class="text-center">Tên phòng</th>
                                 <th class="text-center">Tình Trạng</th>
                                 <th class="text-center">Ghế Hàng Dọc</th>
                                 <th class="text-center">Ghế Hàng Ngang</th>
@@ -57,13 +57,13 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Xóa Xe</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Xóa Phòng</h5>
                                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Chúng ta sẽ xóa Phòng, đồng nghĩa với việc Xóa tất cả Ghế của Xe đó.</p>
+                                        <p>Chúng ta sẽ xóa Phòng, đồng nghĩa với việc Xóa tất cả Ghế của Phòng đó.</p>
                                         <p><b>Lưu ý:</b> Việc này không thể hoàn tác, hãy cẩn thận!</p>
                                         <input type="hidden" class="form-control" id="delete_id"
                                             placeholder="Nhập vào id cần xóa">
@@ -81,7 +81,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Xe/h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Phòng</h5>
                                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -89,9 +89,9 @@
                                     <div class="modal-body">
                                         <input type="hidden" class="form-control" id="edit_id">
                                         <div class="form-group mt-1">
-                                            <label>Tên Xe</label>
+                                            <label>Tên Phòng</label>
                                             <input type="text" class="form-control" id="edit_ten_phong"
-                                                placeholder="Nhập vào tên xe">
+                                                placeholder="Nhập vào tên phòng">
                                         </div>
                                         <div class="form-group mt-3">
                                             <label>Tình Trạng</label>
@@ -152,22 +152,22 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            var id_xe    = 0;
+            var id_phong    = 0;
             var hang_ngang  = 0;
             var hang_doc    = 0;
             $("#add").click(function() {
                 var payload = {
-                    'ten_xe': $("#ten_xe").val(),
+                    'ten_phong': $("#ten_phong").val(),
                     'tinh_trang': $("#tinh_trang").val(),
                     'hang_doc': $("#hang_doc").val(),
                     'hang_ngang': $("#hang_ngang").val(),
                 };
                 axios
-                    .post('/admin/xe/index', payload)
+                    .post('/admin/phong/index', payload)
                     .then((res) => {
                         loadData();
                         toastr.success('Đã thêm mới thành công!');
-                        $("#ten_xe").val('');
+                        $("#ten_phong").val('');
                         $("#tinh_trang").val('');
                         $("#hang_doc").val('');
                         $("#hang_ngang").val('');
@@ -177,13 +177,13 @@
             $("#update_accpect").click(function() {
                 var payload = {
                     'id': $("#edit_id").val(),
-                    'ten_xe': $("#edit_ten_phong").val(),
+                    'ten_phong': $("#edit_ten_phong").val(),
                     'tinh_trang': $("#edit_tinh_trang").val(),
                     'hang_doc': $("#edit_hang_doc").val(),
                     'hang_ngang': $("#edit_hang_ngang").val(),
                 };
                 axios
-                    .post('/admin/xe/update', payload)
+                    .post('/admin/phong/update', payload)
                     .then((res) => {
                         loadData();
                         toastr.success('Đã cập nhật thành công!');
@@ -192,7 +192,7 @@
 
             function loadData() {
                 axios
-                    .get('/admin/xe/data')
+                    .get('/admin/phong/data')
                     .then((res) => {
                         showTable(res.data.list);
                     });
@@ -203,7 +203,7 @@
                 $.each(list_phong, function(key, value) {
                     noi_dung += '<tr>';
                     noi_dung += '<th class="text-center align-middle">' + (key + 1) + '</th>';
-                    noi_dung += '<td class="align-middle">' + value.ten_xe + '</td>';
+                    noi_dung += '<td class="align-middle">' + value.ten_phong + '</td>';
                     noi_dung += '<td class="align-middle text-center">';
                     if (value.tinh_trang) {
                         noi_dung += '<button data-id="' + value.id +
@@ -232,7 +232,7 @@
             $("body").on('click', '.xxx', function() {
                 var id = $(this).data('id');
                 axios
-                    .get('/admin/xe/change-status/' + id)
+                    .get('/admin/phong/change-status/' + id)
                     .then((res) => {
                         loadData();
                         toastr.success('Đã đổi trạng thái thành công!');
@@ -247,11 +247,11 @@
             $("body").on('click', '.edit', function() {
                 var id = $(this).data('id');
                 axios
-                    .get('/admin/xe/edit/' + id)
+                    .get('/admin/phong/edit/' + id)
                     .then((res) => {
                         var phong = res.data.data;
                         $("#edit_id").val(phong.id);
-                        $("#edit_ten_phong").val(phong.ten_xe);
+                        $("#edit_ten_phong").val(phong.ten_phong);
                         $("#edit_hang_ngang").val(phong.hang_ngang);
                         $("#edit_hang_doc").val(phong.hang_doc);
                         $("#edit_tinh_trang").val(phong.tinh_trang);
@@ -261,17 +261,17 @@
             $("#delete_accpect").click(function() {
                 var id_can_xoa = $("#delete_id").val();
                 axios
-                    .get('/admin/xe/delete/' + id_can_xoa)
+                    .get('/admin/phong/delete/' + id_can_xoa)
                     .then((res) => {
                         loadData();
-                        toastr.success('Đã xóa xe kèm ghế thành công!');
+                        toastr.success('Đã xóa phòng kèm ghế thành công!');
                     });
             })
 
-            function loadGhe(id_xe, hang_ngang, hang_doc)
+            function loadGhe(id_phong, hang_ngang, hang_doc)
             {
                 axios
-                    .get('/admin/xe/data-ghe/' + id_xe)
+                    .get('/admin/phong/data-ghe/' + id_phong)
                     .then((res) => {
                         var list_ghe = res.data.danh_sach_ghe;
 
@@ -294,10 +294,10 @@
             }
 
             $("body").on('click', '.ghe', function() {
-                id_xe   = $(this).data('id');
+                id_phong   = $(this).data('id');
                 hang_ngang = $(this).data('hangngang');
                 hang_doc   = $(this).data('hangdoc');
-                loadGhe(id_xe, hang_ngang, hang_doc);
+                loadGhe(id_phong, hang_ngang, hang_doc);
             });
 
             loadData();

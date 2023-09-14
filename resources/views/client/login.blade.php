@@ -38,12 +38,12 @@
                     <h5 class="title">Thông Tin Về Chúng Tôi</h5>
                 </div>
                 <div class="contact-info-wrap">
-                    <p><span>BenXeTrungTam :</span> Tận hưởng từng khoảnh khắc của bạn</p>
+                    <p><span>DZFullStack Cinema :</span> Tận hưởng từng khoảnh khắc của bạn</p>
                     <div class="contact-info-list">
                         <ul>
                             <li>
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                                <p><span>Address :</span> Bến Xe Trung Tâm thành phố Đà Nẵng</p>
+                                <p><span>Address :</span> 32 Xuân Diệu, Thuận Phước, Hải Châu, Đà Nẵng</p>
                             </li>
                             <li>
                                 <div class="icon"><i class="fas fa-phone-alt"></i></div>
@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <div class="icon"><i class="fas fa-envelope"></i></div>
-                                <p><span>Email :</span> benxedanang@gmail.com</p>
+                                <p><span>Email :</span> dzfullstack@gmail.com</p>
                             </li>
                         </ul>
                     </div>

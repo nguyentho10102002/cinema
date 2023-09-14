@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lich_trinhs', function (Blueprint $table) {
+        Schema::create('giao_dichs', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_xe');
-            $table->integer('id_chuyen_xe');
-            $table->integer('thoi_gian_chay_chinh');
-            $table->integer('thoi_gian_nghi_chan');
-            $table->dateTime('thoi_gian_bat_dau');
-            $table->dateTime('thoi_gian_ket_thuc');
+            $table->string('Reference');
+            $table->string('Description');
+            $table->double('Amount');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lich_trinhs');
+        Schema::dropIfExists('giao_diches');
     }
 };

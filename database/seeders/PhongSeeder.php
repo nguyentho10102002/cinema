@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Ghe;
-use App\Models\Xe;
+use App\Models\Phong;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class XeSeeder extends Seeder
+class PhongSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,82 +18,82 @@ class XeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('xes')->delete();
+        DB::table('phongs')->delete();
         DB::table('ghes')->delete();
 
         // Reset id về lại 1
-        DB::table('xes')->truncate();
+        DB::table('phongs')->truncate();
         DB::table('ghes')->truncate();
 
         // 2. Ta sẽ thêm mới phim bằng lệnh create
-        DB::table('xes')->insert([
+        DB::table('phongs')->insert([
             [
-                'ten_xe'     =>"Hoàng Trung",
+                'ten_phong'     =>"DZ FullStack 1",
                 'tinh_trang'    => rand(0,1),
                 'hang_doc'      => 7,
-                'hang_ngang'    => 6,
+                'hang_ngang'    => 9,
             ],
             [
-                'ten_xe'     =>"Trung Tín",
+                'ten_phong'     =>"DZ FullStack 2",
                 'tinh_trang'    => rand(0,1),
                 'hang_doc'      => 7,
-                'hang_ngang'    => 6,
+                'hang_ngang'    => 9,
             ],
             [
-                'ten_xe'     =>"Kim Anh",
+                'ten_phong'     =>"DZ FullStack 3",
                 'tinh_trang'    => rand(0,1),
                 'hang_doc'      => 7,
-                'hang_ngang'    => 6,
+                'hang_ngang'    => 9,
             ],
             [
-                'ten_xe'     =>"Sĩ Hảo",
+                'ten_phong'     =>"DZ FullStack 3",
                 'tinh_trang'    => rand(0,1),
                 'hang_doc'      => 7,
-                'hang_ngang'    => 6,
+                'hang_ngang'    => 9,
             ],
             [
-                'ten_xe'     =>"Thái Sơn",
+                'ten_phong'     =>"DZ FullStack 4",
                 'tinh_trang'    => rand(0,1),
                 'hang_doc'      => 7,
-                'hang_ngang'    => 6,
+                'hang_ngang'    => 9,
             ],
             [
-                'ten_xe'     =>"Hồng Hải",
+                'ten_phong'     =>"DZ FullStack 5",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 8,
-                'hang_ngang'    => 6,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],
             [
-                'ten_xe'     =>"Minh Phương",
+                'ten_phong'     =>"DZ FullStack 6",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 8,
-                'hang_ngang'    => 6,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],
             [
-                'ten_xe'     =>"Quốc Đạt",
+                'ten_phong'     =>"DZ FullStack 7",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 9,
-                'hang_ngang'    => 6,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],[
-                'ten_xe'     =>"Cao Nguyên",
+                'ten_phong'     =>"DZ FullStack 8",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 8,
-                'hang_ngang'    => 3,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],[
-                'ten_xe'     =>"Hương Sơn",
+                'ten_phong'     =>"DZ FullStack 9",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 9,
-                'hang_ngang'    => 3,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],[
-                'ten_xe'     =>"Hải Hoàng Gia",
+                'ten_phong'     =>"DZ FullStack 10",
                 'tinh_trang'    => rand(0,1),
-                'hang_doc'      => 8,
-                'hang_ngang'    => 3,
+                'hang_doc'      => 6,
+                'hang_ngang'    => 8,
             ],
         ]);
 
-        $list_xe = Xe::get();
-        foreach ($list_xe as $key => $value) {
+        $list_phong = Phong::get();
+        foreach ($list_phong as $key => $value) {
             for($dong = 1; $dong <= $value->hang_ngang; $dong++) {
                 $chu = chr($dong + 64);
                 for($cot = 1; $cot <= $value->hang_doc; $cot++) {
@@ -101,7 +101,7 @@ class XeSeeder extends Seeder
                     $ghe = Ghe::create([
                         'ten_ghe'       => $ten_ghe,
                         'tinh_trang'    => 1,
-                        'id_xe'      => $value->id,
+                        'id_phong'      => $value->id,
                     ]);
                 }
             }

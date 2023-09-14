@@ -14,13 +14,13 @@ class CreatePhimRequest extends FormRequest
     public function rules()
     {
         return [
-            'ten_nha_xe'          => 'required',
-            'slug_ten_nha_xe'     => 'required|unique:chuyen_xes,slug_ten_nha_xe',
-            'noi_xuat_phat'          => 'required',
-            'ngay_bat_dau_chay'   => 'required|date',
-            'noi_ket_thuc'         => 'required',
-            'loai_xe'          => 'required',
-            'thoi_gian_chay'        => 'required|numeric|min:5',
+            'ten_phim'          => 'required',
+            'slug_ten_phim'     => 'required|unique:phims,slug_ten_phim',
+            'dao_dien'          => 'required',
+            'ngay_khoi_chieu'   => 'required|date',
+            'dien_vien'         => 'required',
+            'the_loai'          => 'required',
+            'thoi_luong'        => 'required|numeric|min:5',
             'mo_ta'             => 'required|min:20|max:200',
             'avatar'            => 'required',
             'trailer'           => 'required',
@@ -31,14 +31,14 @@ class CreatePhimRequest extends FormRequest
     public function messages()
     {
         return [
-            'ten_nha_xe.*'                => 'Tên nhà xe không được để trống',
-            'slug_ten_nha_xe.required'    => 'Slug không được để trống',
-            'slug_ten_nha_xe.unique'      => 'Slug đã tồn tại!',
-            'noi_xuat_phat.*'                => 'Nơi bắt đầu không được để trống',
-            'ngay_bat_dau_chay.*'         => 'Ngày bắt đầu chạy phải là định dạng ngày tháng',
-            'noi_ket_thuc.*'               => 'Nói kết thúc không được để trống',
-            'loai_xe.*'                => 'Loại xe không được để trống',
-            'thoi_gian_chay.*'              => 'Thời gian phải từ 5p trở lên',
+            'ten_phim.*'                => 'Tên phim không được để trống',
+            'slug_ten_phim.required'    => 'Slug không được để trống',
+            'slug_ten_phim.unique'      => 'Slug đã tồn tại!',
+            'dao_dien.*'                => 'Đạo diễn không được để trống',
+            'ngay_khoi_chieu.*'         => 'Ngày khởi chiếu phải là định dạng ngày tháng',
+            'dien_vien.*'               => 'Diễn viên không được để trống',
+            'the_loai.*'                => 'Thể loại không được để trống',
+            'thoi_luong.*'              => 'Thời lượng phải từ 5p trở lên',
             'mo_ta.*'                   => 'Mô tả phải từ 20 đến 200 ký tự',
             'avatar.*'                  => 'Avatar không được để trống',
             'trailer.*'                 => 'Trailler không được để trống',

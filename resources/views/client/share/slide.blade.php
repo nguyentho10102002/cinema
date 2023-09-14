@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb-content">
-                    <h2 class="title">Bến Xe Trung Tâm <span>TP Đà Nẵng</span></h2>
+                    <h2 class="title">DZFullStack <span>CINEMA</span></h2>
                 </div>
             </div>
         </div>

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chuyen_xes', function (Blueprint $table) {
+        Schema::create('phims', function (Blueprint $table) {
             $table->id();
-            $table->string('ten_nha_xe');
-            $table->string('slug_ten_nha_xe')->unique();
-            $table->string('noi_xuat_phat');
-            $table->string('noi_ket_thuc');
-            $table->string('loai_xe');
-            $table->integer('thoi_gian_chay');
-            $table->date('ngay_bat_dau_chay');
+            $table->string('ten_phim');
+            $table->string('slug_ten_phim')->unique();
+            $table->string('dao_dien');
+            $table->string('dien_vien');
+            $table->string('the_loai');
+            $table->integer('thoi_luong');
+            $table->date('ngay_khoi_chieu');
             $table->string('avatar');
             $table->text('mo_ta');
             $table->string('trailer');
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chuyen_xes');
+        Schema::dropIfExists('phims');
     }
 };

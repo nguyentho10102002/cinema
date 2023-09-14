@@ -4,19 +4,19 @@
     <div class="col-md-4">
         <div class="card border-danger border-bottom border-3 border-0">
             <div class="card-header">
-                Thêm Mới Nhân Viên
+                Thêm Mới Nhân Sự
             </div>
             <div class="card-body">
                 <div class="form-group mt-1">
-                    <label>Tên Nhân Viên</label>
+                    <label>Tên Nhân Sự</label>
                     <input v-model="them_moi.ho_va_ten" type="text" class="form-control">
                 </div>
                 <div class="form-group mt-1">
-                    <label>Email Nhân Viên</label>
+                    <label>Email Nhân Sự</label>
                     <input v-model="them_moi.email" type="email" class="form-control">
                 </div>
                 <div class="form-group mt-1">
-                    <label>Mật Khẩu Nhân Viên</label>
+                    <label>Mật Khẩu Nhân Sự</label>
                     <input v-model="them_moi.password" type="text" class="form-control">
                 </div>
             </div>
@@ -28,7 +28,7 @@
     <div class="col-md-8">
         <div class="card border-danger border-bottom border-3 border-0">
             <div class="card-header">
-                Danh Sách Nhân Viên
+                Danh Sách Nhân Sự
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -77,7 +77,7 @@
                 axios
                     .post('/admin/tai-khoan/create', this.them_moi)
                     .then((res) => {
-                        toastr.success("Đã thêm mới nhân Viên thành công!");
+                        toastr.success("Đã thêm mới nhân sự thành công!");
                         this.loadData();
                     })
                     .catch((res) => {

@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('ten_ghe');
             $table->integer('tinh_trang');
-            $table->integer('id_xe');
+            $table->integer('id_phong');
             $table->timestamps();
         });
     }

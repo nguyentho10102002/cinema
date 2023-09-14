@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CheckIdPhimRequest;
 use App\Http\Requests\CreatePhimRequest;
 use App\Http\Requests\UpdatePhimRequest;
-use App\Models\ChuyenXe;
+use App\Models\Phim;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ChuyenXeController extends Controller
+class PhimController extends Controller
 {
     public function index()
     {
@@ -18,14 +18,14 @@ class ChuyenXeController extends Controller
 
     public function store(Request $request)
     {
-        $chuyenxe = ChuyenXe::where('slug_ten_nha_xe', $request->slug_ten_nha_xe)->first();
-        if ($chuyenxe) {
+        $phim = Phim::where('slug_ten_phim', $request->slug_ten_phim)->first();
+        if ($phim) {
             return response()->json([
                 'slug' => true,
             ]);
         } else {
             $data   = $request->all();
-            ChuyenXe::create($data);
+            Phim::create($data);
             return response()->json([
                 'trang_thai_them_moi' => true,
             ]);
@@ -34,7 +34,7 @@ class ChuyenXeController extends Controller
 
     public function getData()
     {
-        $data = ChuyenXe::orderByDESC('created_at')->get();
+        $data = Phim::orderByDESC('created_at')->get();
         return response()->json([
             'phim'  => $data,
         ]);
@@ -48,12 +48,12 @@ class ChuyenXeController extends Controller
     public function storeVue(CreatePhimRequest $request)
     {
         $data   = $request->all();
-        ChuyenXe::create($data);
+        Phim::create($data);
     }
 
     public function destroy(CheckIdPhimRequest $request)
     {
-        ChuyenXe::where('id', $request->id)->first()->delete();
+        Phim::where('id', $request->id)->first()->delete();
 
         return response()->json([
             'status'    => true,
@@ -63,8 +63,8 @@ class ChuyenXeController extends Controller
     public function update(UpdatePhimRequest $request)
     {
         $data = $request->all();
-        $chuyenxe = ChuyenXe::where('id', $request->id)->first();
-        $chuyenxe->update($data);
+        $phim = Phim::where('id', $request->id)->first();
+        $phim->update($data);
 
         return response()->json([
             'status'    => true,

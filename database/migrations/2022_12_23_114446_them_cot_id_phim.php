@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('configs', function (Blueprint $table) {
-            $table->integer('id_chuyen_xe')->nullable();
+            $table->integer('id_phim')->nullable();
         });
     }
 

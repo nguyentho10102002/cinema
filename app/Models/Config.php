@@ -13,8 +13,8 @@ class Config extends Model
 
     protected $fillable = [
         'bg_homepage',
-        'id_chuyen_xe',
-        'chuyen_xe_2',
-        'chuyen_xe_3',
+        'id_phim',
+        'phim_2',
+        'phim_3',
     ];
 }

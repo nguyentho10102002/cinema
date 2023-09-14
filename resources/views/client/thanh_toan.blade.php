@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="season">Tên Chuyến Xe: {{ $chuyenxe->ten_nha_xe }} - Lịch Trình: {{ Carbon\Carbon::parse($chuyenxe->thoi_gian_bat_dau)->format('H:i d/m/Y')  }}</span>
+                                    <span class="season">Tên Phim: {{ $phim->ten_phim }} - Lịch Chiếu: {{ Carbon\Carbon::parse($phim->thoi_gian_bat_dau)->format('H:i d/m/Y')  }}</span>
                                     <span class="video-count">{{ $tongVe }} Vé đã đặt</span>
                                 </button>
                             </div>
@@ -32,7 +32,7 @@
                                 </button>
                                 <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <span class="season">Thanh Toán Ngân Hàng AGRIBANK</span>
-                                    <span class="video-count">Bạn cần thanh toán {{ number_format($tongVe * 15, 0, '.', ',') }} vnđ<br>Qua số tài khoản 3802205327148. <br>Nội dung là {{ $maGiaoDich }}</span>
+                                    <span class="video-count">Bạn cần thanh toán {{ number_format($tongVe * 15, 0, '.', ',') }} vnđ<br>Qua số tài khoản 5204205317278. <br>Nội dung là {{ $maGiaoDich }}</span>
                                 </button>
                                 <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <span class="season">Thời Gian Có Thể Thanh Toán</span>

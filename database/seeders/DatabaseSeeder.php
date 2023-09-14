@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\LichChieu;
-use App\Models\Xe;
+use App\Models\Phong;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         $this->call(AdminSeeder::class);
         $this->call(BaiVietSeeder::class);
-        $this->call(XeSeeder::class);
-        $this->call(ChuyenXeSeeder::class);
+        $this->call(PhongSeeder::class);
+        $this->call(PhimSeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(LichChieuSeeder::class);
         Schema::enableForeignKeyConstraints();
